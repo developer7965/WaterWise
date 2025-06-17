@@ -115,8 +115,8 @@ export interface AchievementBadgeDefinition {
 }
 
 const achievedBadgeBaseClasses = 'shadow-lg hover:opacity-95 transform hover:scale-105 transition-all duration-200 ease-in-out';
-const regularAchievedClasses = `${achievedBadgeBaseClasses} bg-gradient-to-br from-teal-400 to-blue-500 text-white border-teal-500/50 shadow-cyan-500/50 glow-blue-green`;
-const superAchievedClasses = `${achievedBadgeBaseClasses} bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 text-white border-orange-500/50 shadow-orange-500/70 animate-pulse glow-orange`;
+const regularAchievedClasses = `${achievedBadgeBaseClasses} bg-primary text-primary-foreground border-primary/30 shadow-md shadow-primary/40 glow-blue-green`;
+const superAchievedClasses = `${achievedBadgeBaseClasses} bg-gradient-to-r from-purple-600 via-pink-500 to-sky-400 text-white border-transparent shadow-lg shadow-pink-500/60 animate-pulse glow-rainbow`;
 const unachievedClasses = 'bg-muted text-muted-foreground border-border filter grayscale opacity-70 hover:bg-muted/80';
 
 
