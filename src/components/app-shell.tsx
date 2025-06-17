@@ -257,7 +257,7 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
                 <Link href="/chatbot" passHref legacyBehavior>
                   <Button
                     asChild
-                    className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-accent hover:bg-accent/90 text-accent-foreground z-50"
+                    className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-accent hover:bg-accent/90 text-accent-foreground z-50 rainbow-glow-fab"
                     aria-label="AquaChat AI"
                   >
                     <a><Sparkles className="h-7 w-7" /></a>
