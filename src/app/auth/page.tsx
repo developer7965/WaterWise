@@ -94,7 +94,11 @@ export default function AuthPage() {
           <Card>
             <CardHeader>
               <CardTitle className="font-headline text-2xl flex items-center"><LogIn className="mr-2 h-6 w-6 text-primary"/>Welcome Back!</CardTitle>
+<<<<<<< HEAD
               <CardDescription>Sign in to your WaterWise account</CardDescription>
+=======
+              <CardDescription>Sign in to your WaterWise account.</CardDescription>
+>>>>>>> 4c8f505 (init commit w firebase studio)
             </CardHeader>
             <form onSubmit={loginForm.handleSubmit(handleLogin)}>
               <CardContent className="space-y-4">
@@ -134,7 +138,11 @@ export default function AuthPage() {
           <Card>
             <CardHeader>
               <CardTitle className="font-headline text-2xl flex items-center"><UserPlus className="mr-2 h-6 w-6 text-primary"/>Create Account</CardTitle>
+<<<<<<< HEAD
               <CardDescription>Join WaterWise and start saving water today!</CardDescription>
+=======
+              <CardDescription>Join WaterWise and start saving water today.</CardDescription>
+>>>>>>> 4c8f505 (init commit w firebase studio)
             </CardHeader>
             <form onSubmit={registerForm.handleSubmit(handleRegister)}>
               <CardContent className="space-y-4">
@@ -182,3 +190,7 @@ export default function AuthPage() {
     </div>
   );
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4c8f505 (init commit w firebase studio)

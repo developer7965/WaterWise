@@ -3,13 +3,18 @@ import type { LucideIcon } from 'lucide-react';
 import { 
   Droplet, ShowerHead, WashingMachine, Pipette, Lightbulb, Trophy, TreePine, CloudRain, ChefHat, Recycle, Thermometer, 
   Droplets, BarChart3, User, Settings, Users, Car, Bath, CookingPot, Snowflake, Gauge, Sparkles, PenToolIcon,
+<<<<<<< HEAD
   Award, Star, HelpCircle, TrendingUp, DollarSign, Target, Sun, Info // Added Info
+  Award, Star, HelpCircle, TrendingUp, DollarSign, Target, Sun, Info
 } from 'lucide-react';
 
 export const challengeIconsMap = {
   ShowerHead, Pipette, Droplet, WashingMachine, CloudRain, ChefHat, Recycle, Thermometer, Droplets, TreePine,
   Lightbulb, Trophy, BarChart3, User, Settings, Users, Car, Bath, CookingPot, Snowflake, Gauge, Sparkles, PenToolIcon,
+<<<<<<< HEAD
   Award, Star, HelpCircle, TrendingUp, DollarSign, Target, Sun, Info // Added Info here as well
+=======
+  Award, Star, HelpCircle, TrendingUp, DollarSign, Target, Sun, Info
 } as const;
 
 export type ChallengeIconName = keyof typeof challengeIconsMap;
@@ -254,6 +259,7 @@ const superAchieverBadge: AchievementBadgeDefinition = {
   isSecret: true,
   secretName: 'Secret Achievement',
   secretDescription: '🤫 Complete all other achievements to unlock!',
+  secretDescription: '🤫',
   secretIcon: HelpCircle,
 };
 
@@ -265,6 +271,7 @@ export interface WaterUsageFact {
   title: string;
   description: string;
   iconName: ChallengeIconName; // Re-use ChallengeIconName for simplicity
+  iconName: ChallengeIconName;
 }
 
 export const waterUsageFacts: WaterUsageFact[] = [

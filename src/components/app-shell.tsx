@@ -31,6 +31,10 @@ import {
   AlertTriangle,
   Sparkles, 
   Info,
+<<<<<<< HEAD
+=======
+  PanelLeft, // Added PanelLeft for SidebarTrigger
+>>>>>>> 4c8f505 (init commit w firebase studio)
 } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useAuth } from "@/hooks/use-auth";
@@ -51,7 +55,10 @@ const navItems: NavItem[] = [
   { href: "/challenges", label: "Challenges", icon: Trophy, authRequired: true },
   { href: "/impact", label: "Impact", icon: TrendingUp, authRequired: true },
   { href: "/info", label: "Water Facts", icon: Info, authRequired: true },
+<<<<<<< HEAD
   // { href: "/chatbot", label: "AquaChat AI", icon: Sparkles, authRequired: true }, // Removed from sidebar
+=======
+>>>>>>> 4c8f505 (init commit w firebase studio)
   { href: "/profile", label: "Profile", icon: UserCircle, authRequired: true },
 ];
 
@@ -199,7 +206,14 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
             <Droplet className="h-7 w-7 text-primary" />
             <h1 className="text-xl font-bold text-primary-foreground font-headline group-data-[collapsible=icon]:hidden">WaterWise</h1>
           </Link>
+<<<<<<< HEAD
           <SidebarTrigger className="hidden md:flex" /> 
+=======
+          {/* Ensure SidebarTrigger uses PanelLeft or a similar icon */}
+          <SidebarTrigger className="hidden md:flex">
+             <PanelLeft className="h-5 w-5" /> {/* Explicitly using PanelLeft here */}
+          </SidebarTrigger> 
+>>>>>>> 4c8f505 (init commit w firebase studio)
         </SidebarHeader>
         <SidebarContent className="p-2 flex-grow">
           <ScrollArea className="h-full">
