@@ -31,6 +31,7 @@ import {
   AlertTriangle,
   Sparkles, 
   Info,
+  PanelLeft, // Added PanelLeft for SidebarTrigger
 } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useAuth } from "@/hooks/use-auth";
@@ -51,7 +52,6 @@ const navItems: NavItem[] = [
   { href: "/challenges", label: "Challenges", icon: Trophy, authRequired: true },
   { href: "/impact", label: "Impact", icon: TrendingUp, authRequired: true },
   { href: "/info", label: "Water Facts", icon: Info, authRequired: true },
-  // { href: "/chatbot", label: "AquaChat AI", icon: Sparkles, authRequired: true }, // Removed from sidebar
   { href: "/profile", label: "Profile", icon: UserCircle, authRequired: true },
 ];
 
@@ -199,7 +199,10 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
             <Droplet className="h-7 w-7 text-primary" />
             <h1 className="text-xl font-bold text-primary-foreground font-headline group-data-[collapsible=icon]:hidden">WaterWise</h1>
           </Link>
-          <SidebarTrigger className="hidden md:flex" /> 
+          {/* Ensure SidebarTrigger uses PanelLeft or a similar icon */}
+          <SidebarTrigger className="hidden md:flex">
+             <PanelLeft className="h-5 w-5" /> {/* Explicitly using PanelLeft here */}
+          </SidebarTrigger> 
         </SidebarHeader>
         <SidebarContent className="p-2 flex-grow">
           <ScrollArea className="h-full">
@@ -257,7 +260,7 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
                 <Link href="/chatbot" passHref legacyBehavior>
                   <Button
                     asChild
-                    className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-accent hover:bg-accent/90 text-accent-foreground z-50"
+                    className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-accent hover:bg-accent/90 text-accent-foreground z-50 rainbow-glow-fab"
                     aria-label="AquaChat AI"
                   >
                     <a><Sparkles className="h-7 w-7" /></a>

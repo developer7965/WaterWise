@@ -27,8 +27,8 @@ body {
     --muted: 180 15% 80%;
     --muted-foreground: 240 5% 45%;
 
-    --accent: 53 72% 74%; /* Pale yellow (#F0E68C) */
-    --accent-foreground: 53 40% 30%; /* Darker yellow for text on accent */
+    --accent: 50 93% 54%; /* Bolder Yellow (e.g., #FACC15) */
+    --accent-foreground: 50 100% 15%; /* Dark brown/black for contrast */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -76,8 +76,8 @@ body {
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 0 0% 63.9%;
 
-    --accent: 53 72% 74%; /* Pale yellow for dark mode too */
-    --accent-foreground: 53 40% 20%;
+    --accent: 50 93% 54%; /* Bolder Yellow for dark mode too */
+    --accent-foreground: 50 100% 10%; /* Darker for dark mode contrast */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -122,6 +122,12 @@ body {
   .glow-orange {
     animation: glow-orange-animation 1.5s ease-in-out infinite alternate;
   }
+  .glow-rainbow {
+    animation: glow-rainbow-animation 2.5s ease-in-out infinite alternate;
+  }
+  .rainbow-glow-fab {
+    animation: rainbow-glow-animation 4s infinite linear;
+  }
 }
 
 @keyframes glow-blue-green-animation {
@@ -134,3 +140,16 @@ body {
   100% { box-shadow: 0 0 15px theme('colors.orange.500'), 0 0 30px theme('colors.amber.600'); }
 }
 
+@keyframes glow-rainbow-animation {
+  0% { box-shadow: 0 0 8px theme('colors.purple.500'), 0 0 15px theme('colors.pink.500'); }
+  50% { box-shadow: 0 0 12px theme('colors.pink.500'), 0 0 25px theme('colors.sky.500'); }
+  100% { box-shadow: 0 0 8px theme('colors.sky.500'), 0 0 15px theme('colors.purple.500'); }
+}
+
+@keyframes rainbow-glow-animation {
+  0% { box-shadow: 0 0 4px 1px #ef4444, 0 0 7px 2px #f97316, 0 0 10px 3px #eab308; } /* Red, Orange, Yellow */
+  25% { box-shadow: 0 0 4px 1px #eab308, 0 0 7px 2px #22c55e, 0 0 10px 3px #06b6d4; } /* Yellow, Green, Cyan */
+  50% { box-shadow: 0 0 4px 1px #06b6d4, 0 0 7px 2px #3b82f6, 0 0 10px 3px #8b5cf6; } /* Cyan, Blue, Violet */
+  75% { box-shadow: 0 0 4px 1px #8b5cf6, 0 0 7px 2px #ec4899, 0 0 10px 3px #ef4444; } /* Violet, Pink, Red */
+  100% { box-shadow: 0 0 4px 1px #ef4444, 0 0 7px 2px #f97316, 0 0 10px 3px #eab308; }
+}

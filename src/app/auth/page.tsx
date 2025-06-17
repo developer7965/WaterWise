@@ -94,7 +94,7 @@ export default function AuthPage() {
           <Card>
             <CardHeader>
               <CardTitle className="font-headline text-2xl flex items-center"><LogIn className="mr-2 h-6 w-6 text-primary"/>Welcome Back!</CardTitle>
-              <CardDescription>Sign in to your AquaChat account.</CardDescription>
+              <CardDescription>Log in to your WaterWise account</CardDescription>
             </CardHeader>
             <form onSubmit={loginForm.handleSubmit(handleLogin)}>
               <CardContent className="space-y-4">
@@ -134,7 +134,7 @@ export default function AuthPage() {
           <Card>
             <CardHeader>
               <CardTitle className="font-headline text-2xl flex items-center"><UserPlus className="mr-2 h-6 w-6 text-primary"/>Create Account</CardTitle>
-              <CardDescription>Join AquaChat and start saving water today.</CardDescription>
+              <CardDescription>Join WaterWise and start saving water today!</CardDescription>
             </CardHeader>
             <form onSubmit={registerForm.handleSubmit(handleRegister)}>
               <CardContent className="space-y-4">
