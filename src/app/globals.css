@@ -1,0 +1,136 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 180 29% 94%; /* Very light cyan (#EAF4F4) */
+    --foreground: 240 10% 3.9%; /* Default dark text */
+
+    --card: 180 29% 98%; /* Slightly lighter than background for cards */
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 180 29% 98%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 175 47% 70%; /* Light teal (#A7DBD8) */
+    --primary-foreground: 175 30% 25%; /* Darker teal for text on primary */
+
+    --secondary: 180 20% 88%; /* Lighter gray for secondary elements */
+    --secondary-foreground: 240 10% 3.9%;
+
+    --muted: 180 15% 80%;
+    --muted-foreground: 240 5% 45%;
+
+    --accent: 53 72% 74%; /* Pale yellow (#F0E68C) */
+    --accent-foreground: 53 40% 30%; /* Darker yellow for text on accent */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 180 20% 80%;
+    --input: 180 20% 85%;
+    --ring: 175 47% 50%; /* Ring color related to primary */
+
+    --chart-1: 175 60% 50%;
+    --chart-2: 53 80% 60%;
+    --chart-3: 190 50% 55%;
+    --chart-4: 40 70% 60%;
+    --chart-5: 20 70% 65%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar specific colors, can be adjusted if needed */
+    --sidebar-background: 180 25% 90%; /* Slightly darker than main background */
+    --sidebar-foreground: 240 10% 20%;
+    --sidebar-primary: 175 47% 60%; /* Primary for sidebar active items */
+    --sidebar-primary-foreground: 175 30% 15%;
+    --sidebar-accent: 175 40% 80%; /* Hover/accent for sidebar items */
+    --sidebar-accent-foreground: 175 30% 20%;
+    --sidebar-border: 180 20% 75%;
+    --sidebar-ring: 175 47% 50%;
+  }
+
+  .dark {
+    /* Keeping dark mode variables, but primary theme is light */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 175 47% 70%; /* Light teal for dark mode too, for consistency */
+    --primary-foreground: 175 30% 15%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 53 72% 74%; /* Pale yellow for dark mode too */
+    --accent-foreground: 53 40% 20%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 175 47% 60%;
+
+    --chart-1: 175 60% 60%;
+    --chart-2: 53 80% 70%;
+    --chart-3: 190 50% 65%;
+    --chart-4: 40 70% 70%;
+    --chart-5: 20 70% 75%;
+    
+    --sidebar-background: 240 5% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 175 47% 65%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 4% 18%;
+    --sidebar-ring: 175 47% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Glow animations for badges */
+@layer utilities {
+  .glow-blue-green {
+    animation: glow-blue-green-animation 2s ease-in-out infinite alternate;
+  }
+  .glow-orange {
+    animation: glow-orange-animation 1.5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes glow-blue-green-animation {
+  0% { box-shadow: 0 0 5px theme('colors.cyan.400'), 0 0 10px theme('colors.teal.500'); }
+  100% { box-shadow: 0 0 10px theme('colors.cyan.500'), 0 0 20px theme('colors.teal.600'); }
+}
+
+@keyframes glow-orange-animation {
+  0% { box-shadow: 0 0 8px theme('colors.orange.400'), 0 0 15px theme('colors.amber.500'); }
+  100% { box-shadow: 0 0 15px theme('colors.orange.500'), 0 0 30px theme('colors.amber.600'); }
+}
+
