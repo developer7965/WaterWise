@@ -27,8 +27,8 @@ body {
     --muted: 180 15% 80%;
     --muted-foreground: 240 5% 45%;
 
-    --accent: 53 72% 74%; /* Pale yellow (#F0E68C) */
-    --accent-foreground: 53 40% 30%; /* Darker yellow for text on accent */
+    --accent: 50 93% 54%; /* Pale yellow (#F0E68C) */
+    --accent-foreground: 50 100% 15%; /* Darker brownish yellow for text on accent */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -121,9 +121,14 @@ body {
   }
   .glow-orange {
     animation: glow-orange-animation 1.5s ease-in-out infinite alternate;
+    
+  .glow-rainbow {
+    animation: glow-rainbow-animation 2.5s ease-in-out infinite alternate;
+  }
+  .rainbow-glow-fab {
+    animation: rainbow-glow-animation 4s infinite linear;
   }
 }
-
 @keyframes glow-blue-green-animation {
   0% { box-shadow: 0 0 5px theme('colors.cyan.400'), 0 0 10px theme('colors.teal.500'); }
   100% { box-shadow: 0 0 10px theme('colors.cyan.500'), 0 0 20px theme('colors.teal.600'); }
@@ -134,3 +139,10 @@ body {
   100% { box-shadow: 0 0 15px theme('colors.orange.500'), 0 0 30px theme('colors.amber.600'); }
 }
 
+@keyframes rainbow-glow-animation {
+  0% { box-shadow: 0 0 4px 1px #ef4444, 0 0 7px 2px #f97316, 0 0 10px 3px #eab308; }
+  25% { box-shadow: 0 0 4px 1px #eab308, 0 0 7px 2px #22c55e, 0 0 10px 3px #06b6d4; }
+  50% { box-shadow: 0 0 4px 1px #06b6d4, 0 0 7px 2px #3b82f6, 0 0 10px 3px #8b5cf6; }
+  75% { box-shadow: 0 0 4px 1px #8b5cf6, 0 0 7px 2px #ec4899, 0 0 10px 3px #ef4444; }
+  100% { box-shadow: 0 0 4px 1px #ef4444, 0 0 7px 2px #f97316, 0 0 10px 3px #eab308; }
+}
