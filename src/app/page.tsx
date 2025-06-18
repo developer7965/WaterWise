@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Lightbulb } from "lucide-react";
+import Image from 'next/image';
 
 // ✅ Page metadata (social preview image + SEO)
 export const metadata = {
@@ -19,7 +20,7 @@ export const metadata = {
     description: "Track and visualise your water usage to become more eco-conscious.",
     images: [
       {
-        src: "favicon.ico",
+        src: "/logo.ico",
         width: 1200,
         height: 630,
         alt: "HydroTrack Dashboard Preview"
