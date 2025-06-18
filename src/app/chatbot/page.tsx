@@ -20,7 +20,7 @@ export default function ChatbotPage() {
         <Lightbulb className="h-5 w-5 text-accent" /> {/* Changed icon */}
         <AlertTitle className="font-headline text-accent">Ask Me Anything!</AlertTitle>
         <AlertDescription className="text-accent-foreground/80">
-          I'm here to answer your questions about water conservation, tips, and how to use WaterWise effectively.
+          I'm here to answer your questions about water conservation, tips, and how to use HydroTrack effectively.
         </AlertDescription>
       </Alert>
       <ChatbotInterface 

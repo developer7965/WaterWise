@@ -261,7 +261,7 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
           <Link href="/" className="flex items-center gap-2">
             <Droplet className="h-7 w-7 text-primary" />
             <h1 className="font-headline text-xl font-bold text-primary-foreground group-data-[collapsible=icon]:hidden">
-              WaterWise
+              HydroTrack
             </h1>
           </Link>
           <SidebarTrigger className="hidden md:flex" aria-label="Toggle Sidebar">

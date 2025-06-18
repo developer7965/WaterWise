@@ -5,8 +5,8 @@ import { AppProviders } from '@/components/providers/app-providers';
 import { AppShell } from '@/components/app-shell';
 
 export const metadata: Metadata = {
-  title: 'WaterWise - Save Water, Save Life',
-  description: 'Track, learn, and conserve water with WaterWise.',
+  title: 'HydroTrack - Save Water, Save Life',
+  description: 'Track, learn, and conserve water with HydroTrack.',
 };
 
 export default function RootLayout({

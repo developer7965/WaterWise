@@ -60,7 +60,7 @@ export default function DashboardPage() {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-8 text-center font-headline text-primary-foreground bg-primary p-4 rounded-lg shadow-md">
-        WaterWise Dashboard
+        HydroTrack Dashboard
       </h1>
 
       <Alert className="mb-8 border-accent bg-accent/10 text-accent-foreground">
