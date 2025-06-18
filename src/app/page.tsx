@@ -19,7 +19,7 @@ export const metadata = {
     description: "Track and visualise your water usage to become more eco-conscious.",
     images: [
       {
-        url: "https://i.imgur.com/NS5ch0A.png",
+        url: "favicon.ico",
         width: 1200,
         height: 630,
         alt: "HydroTrack Dashboard Preview"
