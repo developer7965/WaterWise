@@ -259,7 +259,12 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
       <Sidebar variant="sidebar" collapsible="icon" className="border-r border-sidebar-border">
         <SidebarHeader className="flex items-center justify-between p-4">
           <Link href="/" className="flex items-center gap-2">
-            <Droplet className="h-7 w-7 text-primary" />
+            <Image
+              src="/favicon.ico"
+              alt="HydroTrack Logo"
+              width="28"
+              height="28"
+            />
             <h1 className="font-headline text-xl font-bold text-primary-foreground group-data-[collapsible=icon]:hidden">
               HydroTrack
             </h1>
