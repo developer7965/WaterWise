@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image"; // ✅ FIXED: Missing import
 import { usePathname, useRouter } from "next/navigation";
 import {
   Sidebar,
@@ -23,14 +24,13 @@ import {
   Trophy,
   TrendingUp,
   UserCircle,
-  Droplet,
+  Info,
   Menu,
   LogIn,
   LogOut,
   Loader2,
   AlertTriangle,
   Sparkles,
-  Info,
   PanelLeft,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
@@ -59,7 +59,6 @@ const navItems: NavItem[] = [
   { href: "/challenges", label: "Challenges", icon: Trophy, authRequired: true },
   { href: "/impact", label: "Impact", icon: TrendingUp, authRequired: true },
   { href: "/info", label: "Water Facts", icon: Info, authRequired: true },
-  // { href: "/chatbot", label: "AquaChat AI", icon: Sparkles, authRequired: true }, // Removed from sidebar
   { href: "/profile", label: "Profile", icon: UserCircle, authRequired: true },
 ];
 
@@ -99,9 +98,9 @@ function FirebaseConfigErrorDisplay() {
           <li>Add your Firebase project's configuration to this file:</li>
         </ol>
         <pre className="mb-4 whitespace-pre-wrap break-all rounded-md bg-muted p-3 text-left">
-          {`NEXT_PUBLIC_FIREBASE_API_KEY="AIzaSyCJn4uOQZTvYuvgJY_LTLWJiEpPo97eqTI"
+{`NEXT_PUBLIC_FIREBASE_API_KEY="AIzaSyCJn4uOQZTvYuvgJY_LTLWJiEpPo97eqTI"
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="test1-5263f.firebaseapp.com"
-NEXT_PUBLIC_FIREBASE_PROJECT_ID="test1-5263f
+NEXT_PUBLIC_FIREBASE_PROJECT_ID="test1-5263f"
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="test1-5263f.firebasestorage.app"
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="92468165076"
 NEXT_PUBLIC_FIREBASE_APP_ID="1:92468165076:web:fbe0d7e6cd3897906abe41"`}
@@ -142,25 +141,19 @@ NEXT_PUBLIC_FIREBASE_APP_ID="1:92468165076:web:fbe0d7e6cd3897906abe41"`}
             <li>
               <code>NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET</code>:{" "}
               {firebaseConfigValues.storageBucket || (
-                <span className="text-yellow-400">
-                  Not checked for critical error, but may be needed
-                </span>
+                <span className="text-yellow-400">May be needed</span>
               )}
             </li>
             <li>
               <code>NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID</code>:{" "}
               {firebaseConfigValues.messagingSenderId || (
-                <span className="text-yellow-400">
-                  Not checked for critical error, but may be needed
-                </span>
+                <span className="text-yellow-400">May be needed</span>
               )}
             </li>
             <li>
               <code>NEXT_PUBLIC_FIREBASE_APP_ID</code>:{" "}
               {firebaseConfigValues.appId || (
-                <span className="text-yellow-400">
-                  Not checked for critical error, but may be needed
-                </span>
+                <span className="text-yellow-400">May be needed</span>
               )}
             </li>
           </ul>
@@ -171,10 +164,6 @@ NEXT_PUBLIC_FIREBASE_APP_ID="1:92468165076:web:fbe0d7e6cd3897906abe41"`}
 }
 
 export function AppShell({ children }: AppShellProps): JSX.Element {
-  if (!isFirebaseProperlyConfigured) {
-    return <FirebaseConfigErrorDisplay />;
-  }
-
   const pathname = usePathname();
   const router = useRouter();
   const { open, toggleSidebar, isMobile, setOpenMobile } = useSidebar();
@@ -182,7 +171,6 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
 
   useEffect(() => {
     if (loading) return;
-
     const isAuthPage = pathname === "/auth";
 
     if (!user && !isAuthPage) {
@@ -210,9 +198,7 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
                 children: item.label,
                 className: "bg-primary text-primary-foreground",
               }}
-              onClick={() => {
-                if (isMobile) setOpenMobile(false);
-              }}
+              onClick={() => isMobile && setOpenMobile(false)}
               className="font-headline"
             >
               <Link href={item.href}>
@@ -231,9 +217,7 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
               children: "Login",
               className: "bg-primary text-primary-foreground",
             }}
-            onClick={() => {
-              if (isMobile) setOpenMobile(false);
-            }}
+            onClick={() => isMobile && setOpenMobile(false)}
             className="font-headline"
           >
             <Link href="/auth">
@@ -246,13 +230,10 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
     </SidebarMenu>
   );
 
-  if (loading || (!user && pathname !== "/auth") || (user && pathname === "/auth")) {
+  if (!isFirebaseProperlyConfigured) return <FirebaseConfigErrorDisplay />;
+  if (loading || (!user && pathname !== "/auth") || (user && pathname === "/auth"))
     return <GlobalLoader />;
-  }
-
-  if (!user && pathname === "/auth") {
-    return <>{children}</>;
-  }
+  if (!user && pathname === "/auth") return <>{children}</>;
 
   return (
     <div className="flex min-h-screen w-full">
@@ -262,8 +243,9 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
             <Image
               src="https://i.imgur.com/NS5ch0A.png"
               alt="HydroTrack Logo"
-              width="28"
-              height="28"
+              width={28}
+              height={28}
+              unoptimized // ✅ Optional: Needed if external image isn't optimised
             />
             <h1 className="font-headline text-xl font-bold text-primary-foreground group-data-[collapsible=icon]:hidden">
               HydroTrack
@@ -305,23 +287,20 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
       <SidebarInset className="flex flex-col">
         <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-md md:px-6">
           <div className="md:hidden">
-            <Button
-              aria-label="Toggle Menu"
-              onClick={toggleSidebar}
-              size="icon"
-              variant="ghost"
-            >
+            <Button aria-label="Toggle Menu" onClick={toggleSidebar} size="icon" variant="ghost">
               <Menu className="h-6 w-6" />
             </Button>
           </div>
-          <div className="hidden md:block">{/* Optional breadcrumbs/title here */}</div>
+          <div className="hidden md:block" />
           <div className="flex items-center gap-4">
             {user && (
               <Link href="/profile" aria-label="Profile">
                 <Avatar className="h-9 w-9 cursor-pointer">
                   <AvatarImage src={user.photoURL || undefined} alt={user.displayName || "User"} />
                   <AvatarFallback className="bg-muted">
-                    {user.displayName ? user.displayName.charAt(0).toUpperCase() : <UserCircle className="h-5 w-5" />}
+                    {user.displayName
+                      ? user.displayName.charAt(0).toUpperCase()
+                      : <UserCircle className="h-5 w-5" />}
                   </AvatarFallback>
                 </Avatar>
               </Link>
@@ -337,8 +316,8 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
               <TooltipTrigger asChild>
                 <Link href="/chatbot" aria-label="AquaChat AI">
                   <Button
-                    aria-label="AquaChat AI"
                     className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-accent shadow-lg hover:bg-accent/90 text-accent-foreground rainbow-glow-fab"
+                    aria-label="AquaChat AI"
                   >
                     <Sparkles className="h-7 w-7" />
                   </Button>

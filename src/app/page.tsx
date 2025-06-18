@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -7,11 +6,28 @@ import { WaterUsageList } from "@/components/water-usage-list";
 import type { WaterUsageLog } from "@/lib/data";
 import { initialWaterUsageData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Lightbulb } from "lucide-react";
 
-// Helper to aggregate data for chart
+// ✅ Page metadata (social preview image + SEO)
+export const metadata = {
+  title: "HydroTrack Dashboard",
+  description: "Track and understand your daily water usage habits with AquaChat AI.",
+  openGraph: {
+    title: "HydroTrack Dashboard",
+    description: "Track and visualise your water usage to become more eco-conscious.",
+    images: [
+      {
+        url: "https://i.imgur.com/NS5ch0A.png",
+        width: 1200,
+        height: 630,
+        alt: "HydroTrack Dashboard Preview"
+      }
+    ],
+  },
+};
+
 const aggregateUsageBySource = (logs: WaterUsageLog[]) => {
   const aggregated: { [key: string]: number } = {};
   logs.forEach(log => {
@@ -30,7 +46,6 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsClient(true);
-    // Load from local storage if available, otherwise use initial data
     const storedLogs = localStorage.getItem("aquaChatUsageLogs");
     if (storedLogs) {
       setUsageLogs(JSON.parse(storedLogs));
@@ -38,20 +53,19 @@ export default function DashboardPage() {
       setUsageLogs(initialWaterUsageData);
     }
   }, []);
-  
+
   useEffect(() => {
-    if(isClient) {
+    if (isClient) {
       localStorage.setItem("aquaChatUsageLogs", JSON.stringify(usageLogs));
     }
   }, [usageLogs, isClient]);
 
-
   const handleAddLog = (newLog: WaterUsageLog) => {
-    setUsageLogs((prevLogs) => [...prevLogs, newLog]);
+    setUsageLogs(prevLogs => [...prevLogs, newLog]);
   };
 
   const handleDeleteLog = (logId: string) => {
-    setUsageLogs((prevLogs) => prevLogs.filter(log => log.id !== logId));
+    setUsageLogs(prevLogs => prevLogs.filter(log => log.id !== logId));
   };
 
   const chartData = isClient ? aggregateUsageBySource(usageLogs) : [];
@@ -86,7 +100,9 @@ export default function DashboardPage() {
             <CardTitle className="font-headline text-xl">Usage Summary</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4 text-lg">Total water used: <span className="font-bold text-primary">{totalLiters.toFixed(1)} Liters</span></p>
+            <p className="mb-4 text-lg">
+              Total water used: <span className="font-bold text-primary">{totalLiters.toFixed(1)} Litres</span>
+            </p>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
@@ -94,10 +110,10 @@ export default function DashboardPage() {
                   <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" />
                   <YAxis stroke="hsl(var(--muted-foreground))" />
                   <Tooltip
-                    contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))' }}
-                    labelStyle={{ color: 'hsl(var(--card-foreground))' }}
+                    contentStyle={{ backgroundColor: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }}
+                    labelStyle={{ color: "hsl(var(--card-foreground))" }}
                   />
-                  <Legend wrapperStyle={{ color: 'hsl(var(--muted-foreground))' }} />
+                  <Legend wrapperStyle={{ color: "hsl(var(--muted-foreground))" }} />
                   <Bar dataKey="liters" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
