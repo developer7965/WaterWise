@@ -7,15 +7,9 @@ export async function handleChatbotQueryAction(question: string): Promise<string
     const input: WaterwiseChatbotInput = { question };
     const result = await waterwiseChatbot(input);
     return result.answer;
-<<<<<<< HEAD
-  } catch (error) {
-    console.error("Error in chatbot query:", error);
-    return "I'm sorry, I encountered an issue while processing your question. Please try again.";
-  }
-}
-=======
   } catch (error: any) {
     let detailedErrorMessage = "An unexpected error occurred.";
+
     if (error instanceof Error) {
       detailedErrorMessage = error.message;
       console.error("Chatbot Action Error (Instance of Error):", error.message);
@@ -34,9 +28,10 @@ export async function handleChatbotQueryAction(question: string): Promise<string
         detailedErrorMessage = "Error object could not be stringified.";
       }
     }
-    // Log the raw error object as well for maximum context
+
+    // Log the raw error object for full context
     console.error("Raw error object in chatbot action:", error);
-    
+
     return "I'm sorry, I encountered an issue while processing your question. Please try again.";
   }
 }

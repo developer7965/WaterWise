@@ -1,15 +1,7 @@
-import {genkit} from 'genkit';
-import {googleAI} from '@genkit-ai/googleai';
+import { genkit } from 'genkit';
+import { googleAI } from '@genkit-ai/googleai';
 
-export const ai = genkit({
-  plugins: [googleAI()],
-  model: 'googleai/gemini-2.0-flash',
-});
-import {genkit} from 'genkit';
-import {googleAI} from '@genkit-ai/googleai';
-
-// Ensure you have GEMINI_API_KEY set in your Vercel environment variables
-// (and in your .env file for local development, e.g., .env.local or .env)
+// Ensure you have GEMINI_API_KEY set in your environment variables
 const apiKey = process.env.GEMINI_API_KEY;
 
 if (!apiKey) {
@@ -20,6 +12,6 @@ if (!apiKey) {
 }
 
 export const ai = genkit({
-  plugins: [googleAI(apiKey ? {apiKey} : undefined)],
+  plugins: [googleAI(apiKey ? { apiKey } : undefined)],
   model: 'googleai/gemini-2.0-flash',
 });
