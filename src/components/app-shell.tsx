@@ -241,11 +241,11 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
         <SidebarHeader className="flex items-center justify-between p-4">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo.png"
+              src="https://imgur.com/NS5ch0A"
               alt="HydroTrack Logo"
               width={28}
               height={28}
-              unoptimized // ✅ Optional: Needed if external image isn't optimised
+              unoptimized
             />
             <h1 className="font-headline text-xl font-bold text-primary-foreground group-data-[collapsible=icon]:hidden">
               HydroTrack
