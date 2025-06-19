@@ -33,7 +33,6 @@ import {
   Sparkles,
   PanelLeft,
 } from "lucide-react";
-import { useSidebar } from "@/components/ui/sidebar";
 import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { isFirebaseProperlyConfigured, firebaseConfigValues } from '@/lib/firebase';
