@@ -241,7 +241,7 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
         <SidebarHeader className="flex items-center justify-between p-4">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="https://i.imgur.com/NS5ch0A.png"
+              src="/logo.png"
               alt="HydroTrack Logo"
               width={28}
               height={28}
