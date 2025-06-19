@@ -29,37 +29,59 @@ export function WaterUsageList({ usageLogs, onDeleteLog }: WaterUsageListProps) 
 
   const sortedLogs = [...usageLogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+  // Group by formatted date
+  const groupedByDate = sortedLogs.reduce<Record<string, WaterUsageLog[]>>((acc, log) => {
+    const dateKey = format(new Date(log.date), "PPP");
+    if (!acc[dateKey]) {
+      acc[dateKey] = [];
+    }
+    acc[dateKey].push(log);
+    return acc;
+  }, {});
+
+  const dateHeadings = Object.keys(groupedByDate).sort((a, b) =>
+    new Date(b).getTime() - new Date(a).getTime()
+  );
+
   return (
     <Card className="shadow-lg">
       <CardHeader>
         <CardTitle className="font-headline text-xl">Recent Water Usage</CardTitle>
-        <CardDescription>Your latest logged water activities.</CardDescription>
+        <CardDescription>Organised by day.</CardDescription>
       </CardHeader>
       <CardContent>
-        <ScrollArea className="h-[300px] pr-4">
-          <ul className="space-y-3">
-            {sortedLogs.map((log) => {
-              const Icon = waterSourcesIcons[log.source] || waterSourcesIcons.Other;
-              return (
-                <li key={log.id} className="flex items-center justify-between rounded-md border p-3 hover:bg-secondary/50 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <Icon className="h-6 w-6 text-primary" />
-                    <div>
-                      <p className="font-semibold">{log.source} - {log.liters} L</p>
-                      <p className="text-sm text-muted-foreground">
-                        {format(new Date(log.date), "PPP")}
-                        {log.durationMinutes && ` (${log.durationMinutes} min)`}
-                      </p>
-                      {log.notes && <p className="text-xs text-muted-foreground italic mt-1">{log.notes}</p>}
-                    </div>
-                  </div>
-                  <Button variant="ghost" size="icon" onClick={() => onDeleteLog(log.id)} aria-label="Delete log entry">
-                    <Trash2 className="h-4 w-4 text-destructive/70 hover:text-destructive" />
-                  </Button>
-                </li>
-              );
-            })}
-          </ul>
+        <ScrollArea className="h-[300px] pr-4 space-y-6">
+          {dateHeadings.map((date) => (
+            <div key={date}>
+              <h3 className="text-lg font-semibold text-primary mb-2">{date}</h3>
+              <ul className="space-y-3">
+                {groupedByDate[date].map((log) => {
+                  const Icon = waterSourcesIcons[log.source] || waterSourcesIcons.Other;
+                  return (
+                    <li key={log.id} className="flex items-center justify-between rounded-md border p-3 hover:bg-secondary/50 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <Icon className="h-6 w-6 text-primary" />
+                        <div>
+                          <p className="font-semibold">{log.source} - {log.liters} L</p>
+                          {log.durationMinutes && (
+                            <p className="text-sm text-muted-foreground">
+                              Duration: {log.durationMinutes} min
+                            </p>
+                          )}
+                          {log.notes && (
+                            <p className="text-xs text-muted-foreground italic mt-1">{log.notes}</p>
+                          )}
+                        </div>
+                      </div>
+                      <Button variant="ghost" size="icon" onClick={() => onDeleteLog(log.id)} aria-label="Delete log entry">
+                        <Trash2 className="h-4 w-4 text-destructive/70 hover:text-destructive" />
+                      </Button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
         </ScrollArea>
       </CardContent>
     </Card>
