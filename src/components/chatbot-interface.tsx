@@ -90,7 +90,7 @@ export function ChatbotInterface({ onSendMessage, botAvatar, userAvatar }: Chatb
     <Card className="w-full max-w-2xl mx-auto shadow-xl flex flex-col h-[70vh]">
       <CardHeader>
         <CardTitle className="font-headline text-2xl flex items-center">
-          <Bot className="mr-2 h-7 w-7 text-primary" /> AquaChat Bot
+          <Bot className="mr-2 h-7 w-7 text-primary" /> HydroChat Bot
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-grow overflow-hidden p-0">

@@ -314,17 +314,17 @@ export function AppShell({ children }: AppShellProps): JSX.Element {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/chatbot" aria-label="AquaChat AI">
+                <Link href="/chatbot" aria-label="HydroChat AI">
                   <Button
                     className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-accent shadow-lg hover:bg-accent/90 text-accent-foreground rainbow-glow-fab"
-                    aria-label="AquaChat AI"
+                    aria-label="HydroChat AI"
                   >
                     <Sparkles className="h-7 w-7" />
                   </Button>
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="left" className="bg-primary text-primary-foreground">
-                <p>AquaChat AI</p>
+                <p>HydroChat AI</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

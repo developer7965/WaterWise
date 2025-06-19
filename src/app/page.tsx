@@ -11,7 +11,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Lightbulb } from "lucide-react";
 import Image from 'next/image';
 
-// ✅ Page metadata (social preview image + SEO)
 export const metadata = {
   title: "HydroTrack Dashboard",
   description: "Track and understand your daily water usage habits with AquaChat AI.",
@@ -20,7 +19,7 @@ export const metadata = {
     description: "Track and visualise your water usage to become more eco-conscious.",
     images: [
       {
-        src: "/logo.ico",
+        src: "/logo.png",
         width: 1200,
         height: 630,
         alt: "HydroTrack Dashboard Preview"
