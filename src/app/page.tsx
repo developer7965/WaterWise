@@ -11,22 +11,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Lightbulb } from "lucide-react";
 import Image from 'next/image';
 
-export const metadata = {
-  title: "HydroTrack Dashboard",
-  description: "Track and understand your daily water usage habits with AquaChat AI.",
-  openGraph: {
-    title: "HydroTrack Dashboard",
-    description: "Track and visualise your water usage to become more eco-conscious.",
-    images: [
-      {
-        src: "/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "HydroTrack Dashboard Preview"
-      }
-    ],
-  },
-};
+// * hydrotrack dashboard here
 
 const aggregateUsageBySource = (logs: WaterUsageLog[]) => {
   const aggregated: { [key: string]: number } = {};

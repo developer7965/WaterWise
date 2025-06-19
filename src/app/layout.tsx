@@ -5,8 +5,20 @@ import { AppProviders } from '@/components/providers/app-providers';
 import { AppShell } from '@/components/app-shell';
 
 export const metadata: Metadata = {
-  title: 'HydroTrack - Save Water, Save Life',
-  description: 'Track, learn, and conserve water with HydroTrack.',
+  title: "HydroTrack Dashboard",
+  description: "Track and understand your daily water usage habits with AquaChat AI.",
+  openGraph: {
+    title: "HydroTrack Dashboard",
+    description: "Track and visualise your water usage to become more eco-conscious.",
+    images: [
+      {
+        url: "https://i.imgur.com/NS5ch0A.png",
+        width: 1200,
+        height: 630,
+        alt: "HydroTrack Dashboard Preview"
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
