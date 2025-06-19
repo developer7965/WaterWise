@@ -47,7 +47,7 @@ export function WaterUsageList({ usageLogs, onDeleteLog }: WaterUsageListProps) 
     <Card className="shadow-lg">
       <CardHeader>
         <CardTitle className="font-headline text-xl">Recent Water Usage</CardTitle>
-        <CardDescription>Organised by day.</CardDescription>
+        <CardDescription>See your water usage logged by date</CardDescription>
       </CardHeader>
       <CardContent>
         <ScrollArea className="h-[300px] pr-4 space-y-6">
